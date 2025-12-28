@@ -172,7 +172,7 @@ export const education = [
     img: nangkorLogo,
     school: "Nangkor Central School, Pemagatshel",
     date: "2018 - 2021",
-    grade: "73.2%",
+    grade: "69%",
     desc: "I completed my Higher Secondary School education from Nangkor Central School, Pemagatshel. Throughout my studies, I was immersed in a variety of subjects that deepened my understanding of computing and technology. From exploring Data Structures and Algorithms to diving into Web Development and Database Management Systems, I gained practical insights into the world of software development. My time at Nangkor Central School allowed me to work on projects that applied theoretical concepts to real-world problems.",
     degree: "Higher Secondary School(XII), Science",
   },
