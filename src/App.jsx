@@ -8,6 +8,7 @@ import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from './components/BlurBlob';
+import Certificate from "./components/Certificate/Certificate.jsx";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Navbar />
         <About />
         <Skills />
+        <Certificate />
         <Experience />
         <Work />
         <Education />
