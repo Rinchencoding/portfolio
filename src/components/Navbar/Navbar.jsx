@@ -1,146 +1,167 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect
+  /* ======================= SCROLL SPY ======================= */
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const sections = document.querySelectorAll("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-80px 0px -50% 0px",
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => sections.forEach((sec) => observer.unobserve(sec));
   }, []);
 
-  // Lock body scroll when menu is open
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => (document.body.style.overflow = "");
-  }, [isOpen]);
-
-  // Close menu on ESC
-  useEffect(() => {
-    const handleKeyDown = (e) => e.key === "Escape" && setIsOpen(false);
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  const handleMenuItemClick = useCallback((id) => {
-    setActiveSection(id);
+  /* ======================= SCROLL TO SECTION ======================= */
+  const handleMenuClick = useCallback((id) => {
     setIsOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    const section = document.getElementById(id);
+    if (!section) return;
 
-  const handleLogoClick = () => {
-    setActiveSection("");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    const navbarHeight = 80;
+    const top =
+      section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+    window.scrollTo({ top, behavior: "smooth" });
+  }, []);
 
   const menuItems = [
     { id: "about", label: "ABOUT" },
     { id: "skills", label: "SKILLS" },
+    { id: "certificate", label: "CERTIFICATE" },
+    { id: "experience", label: "EXPERIENCE" },
     { id: "work", label: "PROJECTS" },
+    { id: "education", label: "EDUCATION" },
     { id: "contact", label: "CONTACT" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 z-50 w-full px-[6vw] transition ${
-        isScrolled
-          ? "bg-[#050414]/70 backdrop-blur-xl shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="flex items-center justify-between py-5 text-white">
-        {/* Logo */}
+    <>
+      {/* ================= Top bar with logo + social icons ================= */}
+      <div className="fixed top-0 left-0 right-0 z-50 px-[6vw] flex items-center justify-between py-5 text-white bg-[#050414]/50 backdrop-blur-md">
+        {/* LOGO */}
         <button
-          onClick={handleLogoClick}
-          className="flex gap-2 text-sm font-semibold uppercase tracking-[0.4em]"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-sm font-semibold uppercase tracking-[0.25em]"
         >
           <span className="text-[#8245ec]">&lt;</span> Rinchen
           <span className="text-[#8245ec]">/</span>Dawa
           <span className="text-[#8245ec]">&gt;</span>
         </button>
 
-        {/* Desktop Nav */}
-        <div className="hidden items-center gap-6 md:flex">
-          <ul className="flex rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs uppercase tracking-[0.21em]">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => handleMenuItemClick(item.id)}
-                  className={`transform rounded-full px-5 py-3 transition-transform duration-200 ease-out ${
-                    activeSection === item.id
-                      ? "text-white scale-150"
-                      : "text-gray-300 hover:text-white hover:scale-110"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href="https://github.com/Rinchencoding"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="icon-btn"
-          >
+        {/* Desktop social icons */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href="https://github.com/Rinchencoding" target="_blank">
             <FaGithub size={20} />
           </a>
           <a
             href="https://www.linkedin.com/in/rinchen-dawa-6b3559276/"
             target="_blank"
-            rel="noopener noreferrer"
-            className="icon-btn"
           >
             <FaLinkedin size={20} />
           </a>
         </div>
 
-        {/* Mobile Button */}
-        <button
-          onClick={() => setIsOpen((p) => !p)}
-          className="md:hidden flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase"
-        >
-          {isOpen ? "Close" : "Menu"}
-          {isOpen ? <FiX /> : <FiMenu />}
-        </button>
+        {/* Mobile menu button */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase active:scale-95"
+          >
+            {isOpen ? <><FiX /> Close</> : <><FiMenu /> Menu</>}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-[#050414]/95 backdrop-blur-xl md:hidden"
-          onClick={() => setIsOpen(false)}
-        >
-          <div
-            className="flex h-full flex-col justify-between px-[10vw] pt-28 pb-12"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <nav className="space-y-6 text-3xl font-semibold">
-              {menuItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleMenuItemClick(item.id)}
-                  className="w-full border-b border-white/10 pb-4 text-left"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
+      {/* ================= Desktop bottom-centered menu ================= */}
+      <div className="hidden md:flex fixed left-1/2 bottom-8 transform -translate-x-1/2 z-50">
+        <ul className="flex gap-4 rounded-full bg-[#050414]/90 backdrop-blur-lg border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.21em]">
+          {menuItems.map((item) => (
+            <li key={item.id}>
+              <button
+                onClick={() => handleMenuClick(item.id)}
+                className={`relative rounded-full px-4 py-2 transition ${
+                  activeSection === item.id
+                    ? "text-white"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  />
+                )}
+                <span className="relative z-10">{item.label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-            <div className="flex gap-4">
-              <FaGithub size={22} />
-              <FaLinkedin size={22} />
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* ================= Mobile full-screen menu ================= */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-[#050414]/95 backdrop-blur-xl md:hidden"
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="h-full px-[10vw] pt-32 pb-12 flex flex-col justify-between"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <nav className="flex flex-col gap-8 text-3xl font-semibold">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleMenuClick(item.id)}
+                    className={`border-b border-white/10 pb-4 text-left ${
+                      activeSection === item.id
+                        ? "text-[#8245ec]"
+                        : "text-white/80"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </nav>
+
+              <div className="mt-16 flex gap-6">
+                <FaGithub size={24} />
+                <FaLinkedin size={24} />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

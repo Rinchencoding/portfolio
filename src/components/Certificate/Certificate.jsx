@@ -3,8 +3,7 @@ import { certificates } from "../../constants";
 
 const Certificate = () => {
   return (
-    <section
-      id="certificates"
+    <div
       className="relative overflow-hidden py-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -63,7 +62,7 @@ const Certificate = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -185,14 +185,8 @@ const About = () => {
                   className="h-full w-full object-cover"
                 />
                 <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-left text-sm text-gray-200 backdrop-blur-md">
-                  <p className="text-xs uppercase tracking-[0.35em] text-gray-400">
-                    Currently
-                  </p>
                   <p className="mt-1 font-semibold text-white">
-                    Fullstack student @ GCIT
-                  </p>
-                  <p className="mt-1 text-xs text-gray-400">
-                    Building human-centered digital products
+                    Fullstack Developer
                   </p>
                 </div>
               </div>
