@@ -1,80 +1,69 @@
 import React from "react";
-import { education } from "../../constants"; // Import the education data
+import { education } from "../../constants";
 
 const Education = () => {
   return (
     <section
       id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3"
+      className="relative overflow-hidden py-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans"
     >
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My education has been a journey of learning and development. Here are the details of my academic background
-        </p>
+      <div className="pointer-events-none absolute inset-0">
+        <span className="absolute -left-16 top-12 h-64 w-64 rounded-full bg-[#35c3ff]/15 blur-3xl" />
+        <span className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 rounded-full bg-[#8245ec]/20 blur-3xl" />
       </div>
 
-      {/* Education Timeline */}
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-white h-full"></div>
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <header className="text-center">
+          <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
+            Learning Path
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold uppercase tracking-[0.35em] text-gray-300">
+            Education
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-gray-400">
+            From foundational science to specialized computer science, these milestones shaped how I think about building for the web.
+          </p>
+        </header>
 
-        {/* Education Entries */}
-        {education.map((edu, index) => (
-          <div
-            key={edu.id}
-            className={`flex flex-col sm:flex-row items-center mb-16 ${
-              index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            }`}
-          >
-            {/* Timeline Circle */}
-            <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
-              <img
-                src={edu.img}
-                alt={edu.school}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
+        <div className="relative mt-16 pl-8 sm:pl-16">
+          <span className="pointer-events-none absolute left-3 top-0 h-full w-px bg-gradient-to-b from-[#35c3ff] via-white/50 to-transparent" />
 
-            {/* Content Section */}
-            <div
-              className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] ${
-                index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"
-              } sm:ml-44 sm:mr-44 ml-8 transform transition-transform duration-300 hover:scale-105`}
-            >
-              {/* Flex container for image and text */}
-              <div className="flex items-center space-x-6">
-                {/* School Logo/Image */}
-                <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
+          <div className="space-y-12">
+            {education.map((edu) => (
+              <article
+                key={edu.id}
+                className="relative rounded-3xl border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-lg transition duration-500 hover:border-[#35c3ff]/60 hover:shadow-[0_28px_70px_-35px_rgba(53,195,255,0.7)] sm:px-10"
+              >
+                <span className="absolute -left-8 top-10 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-[#18162c] shadow-[0_20px_40px_-35px_rgba(53,195,255,0.9)]">
                   <img
                     src={edu.img}
                     alt={edu.school}
-                    className="w-full h-full object-cover"
+                    className="h-10 w-10 rounded-full object-cover"
                   />
-                </div>
+                </span>
 
-                {/* Degree, School Name, and Date */}
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <h3 className="text-xl sm:text-xl font-semibold text-white">
+                    <h3 className="text-2xl font-semibold text-white">
                       {edu.degree}
                     </h3>
-                    <h4 className="text-md sm:text-sm text-gray-300">
+                    <p className="mt-1 text-sm uppercase tracking-[0.35em] text-gray-500">
                       {edu.school}
-                    </h4>
+                    </p>
                   </div>
-                  {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
+                  <div className="text-right text-sm text-gray-400">
+                    <p>{edu.date}</p>
+                    <p className="mt-1 inline-flex items-center rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-[#b4e6ff]">
+                      Grade&nbsp;{edu.grade}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-              <p className="mt-4 text-gray-400">{edu.desc}</p>
-            </div>
+                <p className="mt-6 text-gray-300">{edu.desc}</p>
+              </article>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
