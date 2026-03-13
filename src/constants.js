@@ -54,6 +54,10 @@ import cmLogo from "./assets/work_logo/cm.png";
 import imagesearchLogo from "./assets/work_logo/image_search.png";
 import removebgLogo from "./assets/work_logo/remove_bg.png";
 import geminiCertificate from "./assets/certificate_photo/gemini_certificate.png";
+import awsCertificate from "./assets/certificate_photo/aws.png";
+import cyberCertificate from "./assets/certificate_photo/Cybersecurity.png";
+import designCertificate from "./assets/certificate_photo/UX.png";
+import pythonCertificate from "./assets/certificate_photo/python.png";
 
 export const SkillsInfo = [
   {
@@ -237,8 +241,8 @@ export const certificates = [
     title: "AWS - Cloud computing",
     issuer: "AWS",
     date: "2024",
-    link: "https://aws.amazon.com/",
-    thumbnail: "https://via.placeholder.com/600x400?text=Certificate+1",
+    link: "https://www.credly.com/badges/34110bbd-b49f-42e7-bee2-5d8f22c93ee7/linked_in_profile",
+    thumbnail: awsCertificate,
   },
   {
     id: 1,
@@ -248,5 +252,28 @@ export const certificates = [
     link: "https://edu.google.accredible.com/234fd33d-2623-4eac-888b-c7d60220d50d#acc.bXne0tRk",
     thumbnail: geminiCertificate,
   },
+    {
+    id: 2,
+    title: "Foundations of Cybersecurity",
+    issuer: "Google",
+    date: "December 28, 2025",
+    link: "https://www.credly.com/badges/34110bbd-b49f-42e7-bee2-5d8f22c93ee7/public_url",
+    thumbnail: cyberCertificate,
+  },
+    {
+    id: 3,
+    title: "Foundations of User Experience (UX) Design",
+    issuer: "Google",
+    date: "December 28, 2025",
+    link: "https://coursera.org/share/e60dc924e703d5f439e40c7cfb635e5f",
+    thumbnail: designCertificate,
+  },
+  {
+    id: 4,
+    title: "Crash Course on Python",
+    issuer: "Google",
+    date: "December 28, 2025",
+    link: "https://coursera.org/share/4dafd52780f639af97f8a3cebb75e30f",
+    thumbnail: pythonCertificate,
+  },
 ];
-

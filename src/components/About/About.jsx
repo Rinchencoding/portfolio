@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Tilt from "react-parallax-tilt";
-import profileImage from "../../assets/profile2.jpg";
+import profileImage from "../../assets/profile.png";
 import "./About.css";
 
 const About = () => {
@@ -168,28 +168,23 @@ const About = () => {
 
         <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
           <Tilt
-            className="w-56 sm:w-72 md:w-[26rem]"
-            tiltMaxAngleX={18}
-            tiltMaxAngleY={18}
+            className="w-64 sm:w-80 md:w-[24rem]"
+            tiltMaxAngleX={8}
+            tiltMaxAngleY={8}
             perspective={1400}
-            scale={1.04}
+            scale={1}
             transitionSpeed={900}
             gyroscope
           >
-            <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-[#1c1535]/80 to-[#090820]/80 p-3 shadow-[0_35px_80px_-45px_rgba(130,69,236,0.8)]">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#8245ec]/35 via-transparent to-[#35c3ff]/30 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[34px]">
-                <img
-                  src={profileImage}
-                  alt="Rinchen Dawa"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-left text-sm text-gray-200 backdrop-blur-md">
-                  <p className="mt-1 font-semibold text-white">
-                    Fullstack Developer
-                  </p>
-                </div>
-              </div>
+            <div className="flex flex-col items-center">
+              <img
+                src={profileImage}
+                alt="Rinchen Dawa"
+                className="h-auto w-full object-contain"
+              />
+              <p className="mt-5 text-sm font-medium uppercase tracking-[0.28em] text-[#d8c7ff]">
+                Fullstack Developer
+              </p>
             </div>
           </Tilt>
         </div>
