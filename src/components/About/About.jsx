@@ -5,6 +5,8 @@ import profileImage from "../../assets/profile.png";
 import "./About.css";
 
 const About = () => {
+  const videoResumeSrc = "/videoResume.mov";
+
   const stars = useMemo(
     () =>
       Array.from({ length: 18 }).map(() => ({
@@ -61,7 +63,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-24 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans"
+      className="relative overflow-hidden py-24 px-[6vw] md:px-[6vw] lg:px-[4vw] font-sans"
     >
       <div className="pointer-events-none absolute inset-0">
         <span className="absolute -left-28 top-16 h-72 w-72 rounded-full bg-[#8245ec]/25 blur-3xl" />
@@ -89,7 +91,7 @@ const About = () => {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-16 lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col gap-16 lg:grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
         <div className="order-2 text-center lg:order-1 lg:text-left">
 
           <h1 className="mt-6 text-4xl font-semibold text-white sm:text-5xl">
@@ -187,6 +189,51 @@ const About = () => {
               </p>
             </div>
           </Tilt>
+        </div>
+
+        <div className="order-3 mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#0f111a]/90 via-[#171226]/90 to-[#120e1f]/90 shadow-[0_28px_70px_-35px_rgba(53,195,255,0.55)] lg:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4 sm:px-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#8f9bff]">
+                Featured
+              </p>
+              <h3 className="mt-1 text-lg font-semibold text-white sm:text-xl">
+                Video Resume
+              </h3>
+            </div>
+            <span className="rounded-full border border-[#35c3ff]/40 bg-[#35c3ff]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8be4ff]">
+              2 mins
+            </span>
+          </div>
+
+          <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">
+            {videoResumeSrc ? (
+              <div className="mx-auto aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-black/70">
+                <video
+                  className="h-full w-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  controls
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={videoResumeSrc} />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-dashed border-[#35c3ff]/40 bg-[#35c3ff]/5 px-4 py-8 text-center sm:px-6">
+                <p className="text-sm text-[#d8ecff] sm:text-base">
+                  Add your video file in
+                  <span className="mx-1 font-semibold text-white">
+                    public/videoResume.mov
+                  </span>
+                  to show your video resume here.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
