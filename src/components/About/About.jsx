@@ -22,7 +22,10 @@ const About = () => {
   }, [videoResumeDriveInput]);
 
   const videoResumeEmbedUrl = videoResumeDriveFileId
-    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/preview?autoplay=1`
+    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/preview`
+    : "";
+  const videoResumeOpenUrl = videoResumeDriveFileId
+    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/view`
     : "";
 
   const stars = useMemo(
@@ -226,15 +229,31 @@ const About = () => {
 
           <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">
             {videoResumeEmbedUrl ? (
-              <div className="mx-auto aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-black/70">
-                <iframe
-                  src={videoResumeEmbedUrl}
-                  title="Rinchen video resume"
-                  className="h-full w-full"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
+              <div className="mx-auto w-full max-w-3xl">
+                <div className="aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/70">
+                  <iframe
+                    src={videoResumeEmbedUrl}
+                    title="Rinchen video resume"
+                    className="h-full w-full"
+                    loading="lazy"
+                    allow="encrypted-media; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+
+                <p className="mt-3 text-center text-xs text-gray-400">
+                  If this player keeps loading, open the video directly in
+                  <a
+                    href={videoResumeOpenUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-1 text-[#8be4ff] underline decoration-[#35c3ff]/50 underline-offset-4 hover:text-white"
+                  >
+                    Google Drive
+                  </a>
+                  .
+                </p>
               </div>
             ) : (
               <div className="rounded-2xl border border-dashed border-[#35c3ff]/40 bg-[#35c3ff]/5 px-4 py-8 text-center sm:px-6">
