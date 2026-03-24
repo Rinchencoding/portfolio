@@ -5,7 +5,25 @@ import profileImage from "../../assets/profile.png";
 import "./About.css";
 
 const About = () => {
-  const videoResumeSrc = "/videoResume.mov";
+  const videoResumeDriveInput =
+    "https://drive.google.com/file/d/1Ov-p-rrrARhBhUWC32b2oqr2aCLoIuQK/view?usp=sharing";
+
+  const videoResumeDriveFileId = useMemo(() => {
+    const input = videoResumeDriveInput.trim();
+    if (!input) return "";
+
+    const filePathMatch = input.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+    if (filePathMatch?.[1]) return filePathMatch[1];
+
+    const idParamMatch = input.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (idParamMatch?.[1]) return idParamMatch[1];
+
+    return /^[a-zA-Z0-9_-]+$/.test(input) ? input : "";
+  }, [videoResumeDriveInput]);
+
+  const videoResumeEmbedUrl = videoResumeDriveFileId
+    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/preview?autoplay=1`
+    : "";
 
   const stars = useMemo(
     () =>
@@ -207,29 +225,25 @@ const About = () => {
           </div>
 
           <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">
-            {videoResumeSrc ? (
+            {videoResumeEmbedUrl ? (
               <div className="mx-auto aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-black/70">
-                <video
-                  className="h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  controls
-                  playsInline
-                  preload="metadata"
-                >
-                  <source src={videoResumeSrc} />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  src={videoResumeEmbedUrl}
+                  title="Rinchen video resume"
+                  className="h-full w-full"
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
               </div>
             ) : (
               <div className="rounded-2xl border border-dashed border-[#35c3ff]/40 bg-[#35c3ff]/5 px-4 py-8 text-center sm:px-6">
                 <p className="text-sm text-[#d8ecff] sm:text-base">
-                  Add your video file in
+                  Paste your Google Drive file id in
                   <span className="mx-1 font-semibold text-white">
-                    public/videoResume.mov
+                    videoResumeDriveFileId
                   </span>
-                  to show your video resume here.
+                  and keep link sharing set to Anyone with the link.
                 </p>
               </div>
             )}
