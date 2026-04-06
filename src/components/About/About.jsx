@@ -5,29 +5,6 @@ import profileImage from "../../assets/profile.png";
 import "./About.css";
 
 const About = () => {
-  const videoResumeDriveInput =
-    "https://drive.google.com/file/d/1Ov-p-rrrARhBhUWC32b2oqr2aCLoIuQK/view?usp=sharing";
-
-  const videoResumeDriveFileId = useMemo(() => {
-    const input = videoResumeDriveInput.trim();
-    if (!input) return "";
-
-    const filePathMatch = input.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-    if (filePathMatch?.[1]) return filePathMatch[1];
-
-    const idParamMatch = input.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-    if (idParamMatch?.[1]) return idParamMatch[1];
-
-    return /^[a-zA-Z0-9_-]+$/.test(input) ? input : "";
-  }, [videoResumeDriveInput]);
-
-  const videoResumeEmbedUrl = videoResumeDriveFileId
-    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/preview`
-    : "";
-  const videoResumeOpenUrl = videoResumeDriveFileId
-    ? `https://drive.google.com/file/d/${videoResumeDriveFileId}/view`
-    : "";
-
   const stars = useMemo(
     () =>
       Array.from({ length: 18 }).map(() => ({
@@ -223,49 +200,25 @@ const About = () => {
               </h3>
             </div>
             <span className="rounded-full border border-[#35c3ff]/40 bg-[#35c3ff]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8be4ff]">
-              2 mins
+              Coming Soon
             </span>
           </div>
 
           <div className="px-4 pb-4 pt-4 sm:px-6 sm:pb-6">
-            {videoResumeEmbedUrl ? (
-              <div className="mx-auto w-full max-w-3xl">
-                <div className="aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/70">
-                  <iframe
-                    src={videoResumeEmbedUrl}
-                    title="Rinchen video resume"
-                    className="h-full w-full"
-                    loading="lazy"
-                    allow="encrypted-media; picture-in-picture"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-
-                <p className="mt-3 text-center text-xs text-gray-400">
-                  If this player keeps loading, open the video directly in
-                  <a
-                    href={videoResumeOpenUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-1 text-[#8be4ff] underline decoration-[#35c3ff]/50 underline-offset-4 hover:text-white"
-                  >
-                    Google Drive
-                  </a>
-                  .
+            <div className="mx-auto w-full max-w-3xl">
+              <div className="aspect-video rounded-2xl border border-dashed border-[#35c3ff]/40 bg-[#35c3ff]/5 px-4 py-8 text-center sm:px-6 sm:py-12">
+                <p className="text-sm uppercase tracking-[0.22em] text-[#8be4ff]">
+                  Video Resume
+                </p>
+                <h4 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+                  Coming Soon
+                </h4>
+                <p className="mx-auto mt-4 max-w-xl text-sm text-[#d8ecff] sm:text-base">
+                  I am currently preparing a polished video resume. Please check
+                  back soon.
                 </p>
               </div>
-            ) : (
-              <div className="rounded-2xl border border-dashed border-[#35c3ff]/40 bg-[#35c3ff]/5 px-4 py-8 text-center sm:px-6">
-                <p className="text-sm text-[#d8ecff] sm:text-base">
-                  Paste your Google Drive file id in
-                  <span className="mx-1 font-semibold text-white">
-                    videoResumeDriveFileId
-                  </span>
-                  and keep link sharing set to Anyone with the link.
-                </p>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
