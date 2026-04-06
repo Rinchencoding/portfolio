@@ -74,7 +74,7 @@ const Navbar = () => {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/in/rinchen-dawa-6b3559276/"
+            href="https://www.linkedin.com/in/rinchen-dawa"
             target="_blank"
           >
             <FaLinkedin size={20} />
