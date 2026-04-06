@@ -26,7 +26,7 @@ import vercelLogo from "./assets/tech_logo/vercel.png";
 
 // Experience Section Logos
 import nhdclLogo from "./assets/company_logo/nhdcl.png";
-import blLogo from "./assets/company_logo/bl.png";
+// import blLogo from "./assets/company_logo/bl.png";
 
 // Education Section Logos
 import gcitLogo from "./assets/education_logo/gcit.png";
@@ -115,22 +115,22 @@ export const experiences = [
       "Microservice Architecture",
     ],
   },
-  {
-    id: 1,
-    img: blLogo,
-    role: "Founding Partner",
-    company: "Bhutan Launchpad Center",
-    date: "March 18 - 20, 2026",
-    desc: "A smart logistics mobile application designed to streamline delivery operations and enhance customer experience. The app enables real-time order tracking, efficient route management, and seamless communication between customers and service providers.",
-    skills: [
-      "Designing",
-      "Wireframing",
-      "Communication",
-      "MVP Development",
-      "Problem Handling",
-      "Startup Management",
-    ],
-  },
+  // {
+  //   id: 1,
+  //   img: blLogo,
+  //   role: "Founding Partner",
+  //   company: "Bhutan Launchpad Center",
+  //   date: "March 18 - 20, 2026",
+  //   desc: "A smart logistics mobile application designed to streamline delivery operations and enhance customer experience. The app enables real-time order tracking, efficient route management, and seamless communication between customers and service providers.",
+  //   skills: [
+  //     "Designing",
+  //     "Wireframing",
+  //     "Communication",
+  //     "MVP Development",
+  //     "Problem Handling",
+  //     "Startup Management",
+  //   ],
+  // },
 ];
 
 export const education = [
