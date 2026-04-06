@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { certificates } from "../../constants";
 
 const Certificate = () => {
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const [isViewerVisible, setIsViewerVisible] = useState(false);
+
+  const openViewer = (certificate) => {
+    setSelectedCertificate(certificate);
+
+    // Delay visibility toggle to let transition classes animate on mount.
+    requestAnimationFrame(() => {
+      setIsViewerVisible(true);
+    });
+  };
+
+  const closeViewer = () => {
+    setIsViewerVisible(false);
+    setTimeout(() => {
+      setSelectedCertificate(null);
+    }, 250);
+  };
+
+  useEffect(() => {
+    if (!selectedCertificate) {
+      return undefined;
+    }
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeViewer();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selectedCertificate]);
+
   return (
     <div
       className="relative overflow-hidden py-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans"
@@ -28,7 +67,8 @@ const Certificate = () => {
           {certificates.map((certificate) => (
             <article
               key={certificate.id}
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_30px_70px_-35px_rgba(130,69,236,0.75)]"
+              onClick={() => openViewer(certificate)}
+              className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_30px_70px_-35px_rgba(130,69,236,0.75)]"
             >
               <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#8245ec] via-white/40 to-[#35c3ff] opacity-60 transition duration-500 group-hover:opacity-100" />
               <div className="overflow-hidden">
@@ -48,10 +88,15 @@ const Certificate = () => {
                   </p>
                 </div>
 
+                <p className="text-xs uppercase tracking-[0.2em] text-[#bfa7ff]">
+                  Click to preview
+                </p>
+
                 <a
                   href={certificate.link}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={(event) => event.stopPropagation()}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#bfa7ff] transition hover:text-white"
                 >
                   <span>View Certificate</span>
@@ -62,6 +107,42 @@ const Certificate = () => {
           ))}
         </div>
       </div>
+
+      {selectedCertificate && (
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm transition-opacity duration-300 ${
+            isViewerVisible ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={closeViewer}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedCertificate.title} preview`}
+        >
+          <div
+            className={`relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/20 bg-[#0c0c14] shadow-[0_30px_80px_-30px_rgba(130,69,236,0.85)] transition-all duration-300 ${
+              isViewerVisible
+                ? "translate-y-0 scale-100 opacity-100"
+                : "translate-y-4 scale-95 opacity-80"
+            }`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closeViewer}
+              className="absolute right-4 top-4 z-10 rounded-full bg-black/60 px-3 py-1 text-sm font-semibold text-white transition hover:bg-[#8245ec]"
+              aria-label="Close certificate preview"
+            >
+              Close
+            </button>
+
+            <img
+              src={selectedCertificate.thumbnail}
+              alt={selectedCertificate.title}
+              className="max-h-[82vh] w-full object-contain bg-[#0c0c14]"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

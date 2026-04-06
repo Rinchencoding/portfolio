@@ -58,6 +58,12 @@ import awsCertificate from "./assets/certificate_photo/aws.png";
 import cyberCertificate from "./assets/certificate_photo/Cybersecurity.png";
 import designCertificate from "./assets/certificate_photo/UX.png";
 import pythonCertificate from "./assets/certificate_photo/python.png";
+import pythonCertificate2 from "./assets/certificate_photo/python2.png";
+import pythonCertificate3 from "./assets/certificate_photo/python3.png";
+import pythonCertificate4 from "./assets/certificate_photo/python4.png";
+
+
+
 
 export const SkillsInfo = [
   {
@@ -257,14 +263,14 @@ export const certificates = [
     title: "Foundations of Cybersecurity",
     issuer: "Google",
     date: "December 28, 2025",
-    link: "https://www.credly.com/badges/34110bbd-b49f-42e7-bee2-5d8f22c93ee7/public_url",
+    link: "https://www.coursera.org/account/accomplishments/verify/T7F2UIPHC0MF",
     thumbnail: cyberCertificate,
   },
     {
     id: 3,
     title: "Foundations of User Experience (UX) Design",
     issuer: "Google",
-    date: "December 28, 2025",
+    date: "December 28, 2026",
     link: "https://coursera.org/share/e60dc924e703d5f439e40c7cfb635e5f",
     thumbnail: designCertificate,
   },
@@ -272,8 +278,32 @@ export const certificates = [
     id: 4,
     title: "Crash Course on Python",
     issuer: "Google",
-    date: "December 28, 2025",
+    date: "December 28, 2026",
     link: "https://coursera.org/share/4dafd52780f639af97f8a3cebb75e30f",
     thumbnail: pythonCertificate,
+  },
+    {
+    id: 5,
+    title: "The Bits and Bytes of Computer Networking",
+    issuer: "Google",
+    date: "March 25, 2026",
+    link: "https://www.coursera.org/account/accomplishments/verify/6ZWWM46MZTIU",
+    thumbnail: pythonCertificate2,
+  },
+   {
+    id: 6,
+    title: "Using Python to Interact with the Operating System",
+    issuer: "Google",
+    date: "March 25, 2026",
+    link: "https://www.coursera.org/account/accomplishments/verify/D6BY2DKWDWCJ",
+    thumbnail: pythonCertificate3,
+  },
+  {
+    id: 7,
+    title: "Automating Real-World Tasks with Python",
+    issuer: "Google",
+    date: "March 31, 2026",
+    link: "https://www.coursera.org/account/accomplishments/verify/LL0MG0QMYOBA",
+    thumbnail: pythonCertificate4,
   },
 ];
