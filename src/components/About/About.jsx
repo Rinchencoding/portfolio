@@ -147,7 +147,7 @@ const About = () => {
 
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-start">
             <a
-              href="https://drive.google.com/file/d/1s8ZPZaK1rUd2Dg7u8-ydcx_8kJCBiUjZ/view?usp=sharing"
+              href="https://drive.google.com/file/d/1YMjVemHDRyecYm1bFSWwaMuvQQzvRukB/view"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#8245ec] to-[#a855f7] px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-white shadow-[0_22px_45px_-28px_rgba(130,69,236,0.9)] transition hover:brightness-110"
