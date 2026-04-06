@@ -35,7 +35,7 @@ import csharpLogo from "./assets/tech_logo/csharp.png";
 
 // Experience Section Logo's
 import nhdclLogo from "./assets/company_logo/nhdcl.png";
-// import agcLogo from "./assets/company_logo/agc_logo.png";
+import blLogo from "./assets/company_logo/bl.png";
 // import newtonschoolLogo from "./assets/company_logo/newtonschool_logo.png";
 
 // Education Section Logo's
@@ -138,34 +138,25 @@ export const experiences = [
       "Tailwind CSS",
       "MongoDb",
       "Spring Boot",
+      "Microservice Architecture",
     ],
   },
-  // {
-  //   id: 1,
-  //   img: agcLogo,
-  //   role: "Fullstack Engineer",
-  //   company: "Agumentik Group of Companies",
-  //   date: "July 2023 - March 2024",
-  //   desc: "Contributed to innovative projects as a Fullstack Engineer, leading both frontend and backend development using technologies such as HTML, CSS, JavaScript, PHP, SQL, Bootstrap, and ReactJS. Worked closely with the team to deliver responsive, high-performance web applications and improve user experience through seamless integration of various technologies.",
-  //   skills: [
-  //     "ReactJS",
-  //     "Redux",
-  //     "JavaScript",
-  //     "Tailwind CSS",
-  //     "HTML",
-  //     "CSS",
-  //     "SQL",
-  //   ],
-  // },
-  // {
-  //   id: 2,
-  //   img: newtonschoolLogo,
-  //   role: "Frontend Intern",
-  //   company: "Newton School",
-  //   date: "September 2021 - August 2022",
-  //   desc: "Worked as a Frontend Developer Intern, designing and implementing scalable UI components and responsive websites using HTML, CSS, JavaScript, Bootstrap, and Material UI. Collaborated with the design team to translate wireframes and prototypes from Figma into interactive, user-friendly web pages.",
-  //   skills: ["HTML", "CSS", "Javascript", "Bootstrap", "Figma", "Material UI"],
-  // },
+   {
+    id: 1,
+    img: blLogo,
+    role: "Founding Partner",
+    company: "Bhutan Lunchpad center",
+    date: "March 18 - 20,  2026",
+    desc: "A smart logistics mobile application designed to streamline delivery operations and enhance customer experience. The app enables real-time order tracking, efficient route management, and seamless communication between customers and service providers. Built with a focus on reliability and scalability, it helps optimize logistics workflows while ensuring faster and more transparent deliveries.",
+    skills: [
+      "Designing",
+      "Wireframing",
+      "Communication",
+      "MVP Development",
+      "Problem Handling",
+      "Startup Management",
+    ],
+  },
 ];
 
 export const education = [
