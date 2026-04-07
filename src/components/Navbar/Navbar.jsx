@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -74,10 +74,16 @@ const Navbar = () => {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/in/rinchen-dawa"
+            href="https://www.linkedin.com/in/rinchen-dawa/"
             target="_blank"
           >
             <FaLinkedin size={20} />
+          </a>
+          <a 
+          href="https://x.com/RinchenDawa18" 
+          target="_blank"
+          >
+            <FaTwitter size={20} />
           </a>
         </div>
 
@@ -154,8 +160,15 @@ const Navbar = () => {
               </nav>
 
               <div className="mt-16 flex gap-6">
-                <FaGithub size={24} />
-                <FaLinkedin size={24} />
+                <a href="https://github.com/Rinchencoding" target="_blank" rel="noopener noreferrer">
+                  <FaGithub size={24} />
+                </a>
+                <a href="https://www.linkedin.com/in/rinchen-dawa" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin size={24} />
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                  <FaTwitter size={24} />
+                </a>
               </div>
             </motion.div>
           </motion.div>
