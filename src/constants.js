@@ -26,7 +26,7 @@ import vercelLogo from "./assets/tech_logo/vercel.png";
 
 // Experience Section Logos
 import nhdclLogo from "./assets/company_logo/nhdcl.png";
-// import blLogo from "./assets/company_logo/bl.png";
+import norThuenLogo from "./assets/company_logo/bl.png";
 
 // Education Section Logos
 import gcitLogo from "./assets/education_logo/gcit.png";
@@ -115,24 +115,27 @@ export const experiences = [
       "Microservice Architecture",
     ],
   },
-  // {
-  //   id: 1,
-  //   img: blLogo,
-  //   role: "Founding Partner",
-  //   company: "Bhutan Launchpad Center",
-  //   date: "March 18 - 20, 2026",
-  //   desc: "A smart logistics mobile application designed to streamline delivery operations and enhance customer experience. The app enables real-time order tracking, efficient route management, and seamless communication between customers and service providers.",
-  //   skills: [
-  //     "Designing",
-  //     "Wireframing",
-  //     "Communication",
-  //     "MVP Development",
-  //     "Problem Handling",
-  //     "Startup Management",
-  //   ],
-  // },
+   {
+    id: 0,
+    img: norThuenLogo,
+    role: "Founding Partner & Fullstack Developer",
+    company: "NorThuen",
+    date: "March 18-20, 2026",
+    desc: "A smart logistics mobile application designed to streamline delivery operations and enhance customer experience. The app enables real-time order tracking, efficient route management, and seamless communication between customers and service providers. Built with a focus on reliability and scalability, it helps optimize logistics workflows while ensuring faster and more transparent deliveries.",
+    skills: [
+      "UX Design",
+      "MVP Development",
+      "StartUp",
+      "Community Building",
+      "Time Management",
+      "Creative Problem Solving",
+      "Teamwork",
+      "Fullstack Development",
+    ],
+  },
 ];
 
+// ------------------------------------------------------------------
 export const education = [
   {
     id: 0,
@@ -163,6 +166,7 @@ export const education = [
   },
 ];
 
+// ------------------------------------------------------------------
 export const projects = [
   {
     id: 0,
@@ -190,6 +194,7 @@ export const projects = [
   },
 ];
 
+// ------------------------------------------------------------------
 export const certificates = [
   {
     id: 0,
@@ -201,7 +206,7 @@ export const certificates = [
   },
   {
     id: 1,
-    title: "Gemini Certified",
+    title: "Gemini Certified certificate",
     issuer: "Google",
     date: "December 28, 2025",
     link: "https://edu.google.accredible.com/234fd33d-2623-4eac-888b-c7d60220d50d#acc.bXne0tRk",
@@ -209,7 +214,7 @@ export const certificates = [
   },
   {
     id: 2,
-    title: "Foundations of Cybersecurity",
+    title: "Foundations of Cybersecurity certificate",
     issuer: "Google",
     date: "December 28, 2025",
     link: "https://www.coursera.org/account/accomplishments/verify/T7F2UIPHC0MF",
@@ -217,15 +222,15 @@ export const certificates = [
   },
   {
     id: 3,
-    title: "Foundations of User Experience (UX) Design",
+    title: "Google UX Design Certificate",
     issuer: "Google",
     date: "December 28, 2025",
-    link: "https://coursera.org/share/e60dc924e703d5f439e40c7cfb635e5f",
+    link: "https://www.coursera.org/account/accomplishments/specialization/ZHNZOJ6PY7R8",
     thumbnail: designCertificate,
   },
   {
     id: 4,
-    title: "Crash Course on Python",
+    title: "Crash Course on Python certificate",
     issuer: "Google",
     date: "December 28, 2025",
     link: "https://coursera.org/share/4dafd52780f639af97f8a3cebb75e30f",
@@ -233,7 +238,7 @@ export const certificates = [
   },
   {
     id: 5,
-    title: "The Bits and Bytes of Computer Networking",
+    title: "The Bits and Bytes of Computer Networking certificate",
     issuer: "Google",
     date: "March 25, 2025",
     link: "https://www.coursera.org/account/accomplishments/verify/6ZWWM46MZTIU",
@@ -241,7 +246,7 @@ export const certificates = [
   },
   {
     id: 6,
-    title: "Using Python to Interact with the Operating System",
+    title: "Using Python to Interact with the Operating System certificate",
     issuer: "Google",
     date: "March 25, 2025",
     link: "https://www.coursera.org/account/accomplishments/verify/D6BY2DKWDWCJ",
@@ -249,7 +254,7 @@ export const certificates = [
   },
   {
     id: 7,
-    title: "Automating Real-World Tasks with Python",
+    title: "Automating Real-World Tasks with Python certificate",
     issuer: "Google",
     date: "March 31, 2025",
     link: "https://www.coursera.org/account/accomplishments/verify/LL0MG0QMYOBA",

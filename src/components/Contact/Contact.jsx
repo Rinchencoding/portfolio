@@ -57,53 +57,53 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans"
+      className="relative overflow-hidden px-5 py-20 font-sans sm:px-[10vw] sm:py-24 md:px-[7vw] lg:px-[20vw]"
     >
       <div className="pointer-events-none absolute inset-0">
         <span className="absolute -left-10 top-12 h-64 w-64 rounded-full bg-[#8245ec]/25 blur-3xl" />
         <span className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/4 rounded-full bg-[#35c3ff]/20 blur-3xl" />
       </div>
 
-      <ToastContainer />
+      <ToastContainer position="top-center" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <header className="text-center">
           <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
             Connect
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold uppercase tracking-[0.35em] text-gray-300">
+          <h2 className="text-3xl font-semibold uppercase tracking-[0.2em] text-gray-300 sm:text-4xl sm:tracking-[0.35em]">
             Contact
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-gray-400">
+          <p className="mx-auto mt-6 max-w-2xl text-sm text-gray-400 sm:text-base">
             Tell me about your next idea or opportunity. I aim to reply within a couple of days and look forward to collaborating.
           </p>
         </header>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-[1fr_minmax(0,1fr)]">
-          <aside className="flex flex-col justify-between gap-10 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg shadow-[0_28px_70px_-35px_rgba(130,69,236,0.65)]">
+        <div className="mt-12 grid gap-6 sm:mt-16 sm:gap-10 lg:grid-cols-[1fr_minmax(0,1fr)]">
+          <aside className="flex flex-col justify-between gap-8 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_28px_70px_-35px_rgba(130,69,236,0.65)] sm:gap-10 sm:rounded-3xl sm:p-8">
             <div>
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-white sm:text-2xl">
                 Let’s build something meaningful.
               </h3>
               <p className="mt-4 text-sm text-gray-300">
                 Whether it is a full-stack product, rapid prototype, or UX refresh, I enjoy partnering with teams who care about detail and usability.
               </p>
             </div>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff]">
+            <ul className="space-y-3 text-xs text-gray-400 sm:text-sm">
+              <li className="flex items-start gap-3">
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff] sm:h-9 sm:w-9">
                   •
                 </span>
                 Collaborative and transparent process
               </li>
-              <li className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff]">
+              <li className="flex items-start gap-3">
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff] sm:h-9 sm:w-9">
                   •
                 </span>
                 Focus on accessible interfaces
               </li>
-              <li className="flex items-center gap-3">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff]">
+              <li className="flex items-start gap-3">
+                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#8245ec]/15 text-[#cbb3ff] sm:h-9 sm:w-9">
                   •
                 </span>
                 End-to-end product thinking
@@ -117,7 +117,7 @@ const Contact = () => {
             )}
           </aside>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg shadow-[0_25px_65px_-38px_rgba(53,195,255,0.7)]">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_25px_65px_-38px_rgba(53,195,255,0.7)] sm:rounded-3xl sm:p-8">
             <form
               ref={form}
               onSubmit={sendEmail}
@@ -169,7 +169,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#8245ec] to-[#5c56ff] px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:brightness-110"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#8245ec] to-[#5c56ff] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-110 sm:w-auto sm:tracking-[0.3em]"
               >
                 Send Message
                 <span aria-hidden>→</span>
