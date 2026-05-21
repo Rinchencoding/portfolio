@@ -2,6 +2,9 @@ import React, { useMemo, useCallback } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Tilt from "react-parallax-tilt";
 import profileImage from "../../assets/profile.png";
+import drukcraftImage from "../../assets/work_logo/drukcraft.png";
+import yoloImage from "../../assets/work_logo/yolo.png";
+import gyalsungImage from "../../assets/work_logo/nhdcl.png";
 import "./About.css";
 
 const About = () => {
@@ -57,6 +60,33 @@ const About = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+
+  const caseStudies = useMemo(
+    () => [
+      {
+        title: "DrukCraft",
+        description:
+          "An eCommerce case study focused on clean product discovery, quick browsing, and a smooth checkout flow.",
+        image: drukcraftImage,
+        figmaLink: "https://www.figma.com/design/vybZPivXbRnkTz4EGv1L21/DrukCraft?node-id=0-1&p=f&t=yRpsD4d3Gm7gxyq3-0",
+      },
+      {
+        title: "Yolo Bhutan",
+        description:
+          "A full-stack marketplace concept designed to connect local sellers with a more modern shopping experience.",
+        image: yoloImage,
+        figmaLink: "https://www.figma.com/design/kuaiJYKhfCagT1802YSu6P/Yolo?node-id=0-1&p=f&t=8TM3Q2E4ygGzNdP8-0",
+      },
+      {
+        title: "Gyalsung Academy",
+        description:
+          "A management interface case study built around clarity, structure, and simple navigation for everyday use.",
+        image: gyalsungImage,
+        figmaLink: "https://www.figma.com/design/kNpUIxE69WTrFwEDiuNFRS/NHDCL-FMS-Phase-ll?node-id=30-4766&p=f&t=tZFnV4lb5EvD0LdX-0",
+      },
+    ],
+    []
+  );
 
   return (
     <section
@@ -219,6 +249,59 @@ const About = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="order-4 mx-auto w-full max-w-5xl lg:col-span-2">
+          <div className="flex flex-col gap-4 text-center lg:text-left">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#8f9bff]">
+              Case Studies
+            </p>
+            <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+              Three visual explorations
+            </h3>
+            <p className="mx-auto max-w-3xl text-sm leading-7 text-gray-400 lg:mx-0">
+              A small selection of product ideas and interface studies where I
+              explored layout, hierarchy, and interaction design.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {caseStudies.map((caseStudy) => (
+              <article
+                key={caseStudy.title}
+                className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg transition duration-500 hover:-translate-y-1 hover:border-[#8245ec]/60 hover:shadow-[0_28px_60px_-32px_rgba(130,69,236,0.75)]"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={caseStudy.image}
+                    alt={caseStudy.title}
+                    className="h-52 w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="p-6">
+                  <p className="text-xs uppercase tracking-[0.3em] text-[#8f9bff]">
+                    Case Study
+                  </p>
+                  <h4 className="mt-3 text-2xl font-semibold text-white">
+                    {caseStudy.title}
+                  </h4>
+                  <p className="mt-4 text-sm leading-7 text-gray-400">
+                    {caseStudy.description}
+                  </p>
+
+                  <a
+                    href={caseStudy.figmaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.22em] text-white transition hover:border-[#8245ec]/60 hover:bg-[#8245ec]/15"
+                  >
+                    View Figma
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
