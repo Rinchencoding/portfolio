@@ -115,8 +115,8 @@ export const experiences = [
       "Microservice Architecture",
     ],
   },
-   {
-    id: 0,
+  {
+    id: 1,
     img: norThuenLogo,
     role: "Founding Partner & Fullstack Developer",
     company: "NorThuen",

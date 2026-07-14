@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { certificates } from "../../constants";
+import SpotlightCard from "../SpotlightCard";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: "easeOut" },
+  }),
+};
 
 const Certificate = () => {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
@@ -51,7 +62,13 @@ const Certificate = () => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <header className="text-center">
+        <motion.header
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={fadeUp}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
             Recognition
           </p>
@@ -61,20 +78,27 @@ const Certificate = () => {
           <p className="mx-auto mt-6 max-w-2xl text-gray-400">
             Courses and credentials that validate my ongoing commitment to mastering new technologies and practices.
           </p>
-        </header>
+        </motion.header>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          {certificates.map((certificate) => (
-            <article
+          {certificates.map((certificate, index) => (
+            <SpotlightCard
               key={certificate.id}
+              custom={index % 3}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeUp}
               onClick={() => openViewer(certificate)}
-              className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_30px_70px_-35px_rgba(130,69,236,0.75)]"
+              className="flex h-full cursor-pointer flex-col rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_30px_70px_-35px_rgba(130,69,236,0.75)]"
             >
               <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#8245ec] via-white/40 to-[#35c3ff] opacity-60 transition duration-500 group-hover:opacity-100" />
               <div className="overflow-hidden">
                 <img
                   src={certificate.thumbnail}
                   alt={certificate.title}
+                  loading="lazy"
+                  decoding="async"
                   className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
@@ -103,7 +127,7 @@ const Certificate = () => {
                   <span aria-hidden>→</span>
                 </a>
               </div>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
       </div>

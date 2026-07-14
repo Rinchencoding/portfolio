@@ -1,5 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { experiences } from "../../constants";
+import SpotlightCard from "../SpotlightCard";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: "easeOut" },
+  }),
+};
 
 const Experience = () => {
   return (
@@ -13,7 +24,13 @@ const Experience = () => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        <header className="text-center">
+        <motion.header
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={fadeUp}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
             Journey
           </p>
@@ -23,21 +40,29 @@ const Experience = () => {
           <p className="mx-auto mt-6 max-w-2xl text-gray-400">
             Roles that taught me how to scale teams, ship resilient features, and design human-centered interfaces end to end.
           </p>
-        </header>
+        </motion.header>
 
         <div className="relative mt-16 pl-8 sm:pl-16">
           <span className="pointer-events-none absolute left-3 top-0 h-full w-px bg-gradient-to-b from-[#8245ec] via-white/40 to-transparent" />
 
           <div className="space-y-12">
-            {experiences.map((experience) => (
-              <article
+            {experiences.map((experience, index) => (
+              <SpotlightCard
                 key={experience.id}
-                className="relative rounded-3xl border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_28px_70px_-35px_rgba(130,69,236,0.7)] sm:px-10"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                clipOverflow={false}
+                className="rounded-3xl border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-lg transition duration-500 hover:border-[#8245ec]/60 hover:shadow-[0_28px_70px_-35px_rgba(130,69,236,0.7)] sm:px-10"
               >
                 <span className="absolute -left-8 top-10 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-[#18162c] shadow-[0_18px_35px_-20px_rgba(130,69,236,0.9)]">
                   <img
                     src={experience.img}
                     alt={experience.company}
+                    loading="lazy"
+                    decoding="async"
                     className="h-10 w-10 rounded-full object-cover"
                   />
                 </span>
@@ -68,7 +93,7 @@ const Experience = () => {
                     </span>
                   ))}
                 </div>
-              </article>
+              </SpotlightCard>
             ))}
           </div>
         </div>

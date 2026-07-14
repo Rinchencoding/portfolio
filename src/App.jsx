@@ -8,15 +8,34 @@ import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import BlurBlob from "./components/BlurBlob";
+import ScrollProgressBar from "./components/ScrollProgressBar";
+import BackToTop from "./components/BackToTop";
 import Certificate from "./components/Certificate/Certificate.jsx";
 
 const App = () => {
   return (
     <div className="bg-[#050414]">
+      <ScrollProgressBar />
+      <BackToTop />
+
       {/* Background Effects */}
       <BlurBlob
         position={{ top: "35%", left: "20%" }}
         size={{ width: "30%", height: "40%" }}
+        color="bg-purple-500"
+        duration={22}
+      />
+      <BlurBlob
+        position={{ top: "70%", left: "80%" }}
+        size={{ width: "24%", height: "32%" }}
+        color="bg-[#35c3ff]"
+        duration={26}
+      />
+      <BlurBlob
+        position={{ top: "110%", left: "15%" }}
+        size={{ width: "22%", height: "28%" }}
+        color="bg-[#ff7ad9]"
+        duration={19}
       />
 
       {/* Grid overlay */}

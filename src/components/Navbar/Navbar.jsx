@@ -59,29 +59,34 @@ const Navbar = () => {
       {/* ================= Top bar with logo + social icons ================= */}
       <div className="fixed top-0 left-0 right-0 z-50 px-[6vw] flex items-center justify-between py-5 text-white bg-[#050414]/50 backdrop-blur-md">
         {/* LOGO */}
-        <button
+        <motion.button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
           className="text-sm font-semibold uppercase tracking-[0.25em]"
         >
           <span className="text-[#8245ec]">&lt;</span> Rinchen
           <span className="text-[#8245ec]">/</span>Dawa
           <span className="text-[#8245ec]">&gt;</span>
-        </button>
+        </motion.button>
 
         {/* Desktop social icons */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="https://github.com/Rinchencoding" target="_blank">
+          <a href="https://github.com/Rinchencoding" target="_blank" rel="noopener noreferrer">
             <FaGithub size={20} />
           </a>
           <a
             href="https://www.linkedin.com/in/rinchen-dawa/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin size={20} />
           </a>
-          <a 
-          href="https://x.com/RinchenDawa18" 
-          target="_blank"
+          <a
+            href="https://x.com/RinchenDawa18"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaTwitter size={20} />
           </a>
@@ -166,7 +171,7 @@ const Navbar = () => {
                 <a href="https://www.linkedin.com/in/rinchen-dawa" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin size={24} />
                 </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/RinchenDawa18" target="_blank" rel="noopener noreferrer">
                   <FaTwitter size={24} />
                 </a>
               </div>

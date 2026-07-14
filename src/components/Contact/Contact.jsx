@@ -1,7 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: "easeOut" },
+  }),
+};
 
 const Contact = () => {
   const form = useRef();
@@ -67,7 +77,13 @@ const Contact = () => {
       <ToastContainer position="top-center" />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <header className="text-center">
+        <motion.header
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={fadeUp}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
             Connect
           </p>
@@ -77,10 +93,16 @@ const Contact = () => {
           <p className="mx-auto mt-6 max-w-2xl text-sm text-gray-400 sm:text-base">
             Tell me about your next idea or opportunity. I aim to reply within a couple of days and look forward to collaborating.
           </p>
-        </header>
+        </motion.header>
 
         <div className="mt-12 grid gap-6 sm:mt-16 sm:gap-10 lg:grid-cols-[1fr_minmax(0,1fr)]">
-          <aside className="flex flex-col justify-between gap-8 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_28px_70px_-35px_rgba(130,69,236,0.65)] sm:gap-10 sm:rounded-3xl sm:p-8">
+          <motion.aside
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp}
+            custom={0}
+            className="flex flex-col justify-between gap-8 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_28px_70px_-35px_rgba(130,69,236,0.65)] sm:gap-10 sm:rounded-3xl sm:p-8">
             <div>
               <h3 className="text-xl font-semibold text-white sm:text-2xl">
                 Let’s build something meaningful.
@@ -115,9 +137,15 @@ const Contact = () => {
                 Thanks for reaching out. I will get back to you soon.
               </div>
             )}
-          </aside>
+          </motion.aside>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_25px_65px_-38px_rgba(53,195,255,0.7)] sm:rounded-3xl sm:p-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp}
+            custom={1}
+            className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg shadow-[0_25px_65px_-38px_rgba(53,195,255,0.7)] sm:rounded-3xl sm:p-8">
             <form
               ref={form}
               onSubmit={sendEmail}
@@ -167,15 +195,18 @@ const Contact = () => {
                 />
               </label>
 
-              <button
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#8245ec] to-[#5c56ff] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-110 sm:w-auto sm:tracking-[0.3em]"
               >
                 Send Message
                 <span aria-hidden>→</span>
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useMemo, useCallback } from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Tilt from "react-parallax-tilt";
+import { motion } from "framer-motion";
 import profileImage from "../../assets/profile.png";
 import drukcraftImage from "../../assets/work_logo/drukcraft.png";
 import yoloImage from "../../assets/work_logo/yolo.png";
@@ -176,23 +177,29 @@ const About = () => {
           </div>
 
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-start">
-            <a
+            <motion.a
               href="https://drive.google.com/file/d/1YMjVemHDRyecYm1bFSWwaMuvQQzvRukB/view"
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#8245ec] to-[#a855f7] px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-white shadow-[0_22px_45px_-28px_rgba(130,69,236,0.9)] transition hover:brightness-110"
             >
               Download CV
               <span aria-hidden>↓</span>
-            </a>
-            <button
+            </motion.a>
+            <motion.button
               type="button"
               onClick={handleContactScroll}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold uppercase tracking-[0.28em] text-gray-200 transition hover:border-[#8245ec]/60 hover:bg-[#8245ec]/10"
             >
               Let’s Talk
               <span aria-hidden>→</span>
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -276,6 +283,8 @@ const About = () => {
                   <img
                     src={caseStudy.image}
                     alt={caseStudy.title}
+                    loading="lazy"
+                    decoding="async"
                     className="h-52 w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>

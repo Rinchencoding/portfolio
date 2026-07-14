@@ -1,5 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { education } from "../../constants";
+import SpotlightCard from "../SpotlightCard";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: "easeOut" },
+  }),
+};
 
 const Education = () => {
   return (
@@ -13,7 +24,13 @@ const Education = () => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        <header className="text-center">
+        <motion.header
+          className="text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={fadeUp}
+        >
           <p className="text-xs uppercase tracking-[0.5em] text-gray-500">
             Learning Path
           </p>
@@ -23,21 +40,30 @@ const Education = () => {
           <p className="mx-auto mt-6 max-w-2xl text-gray-400">
             From foundational science to specialized computer science, these milestones shaped how I think about building for the web.
           </p>
-        </header>
+        </motion.header>
 
         <div className="relative mt-16 pl-8 sm:pl-16">
           <span className="pointer-events-none absolute left-3 top-0 h-full w-px bg-gradient-to-b from-[#35c3ff] via-white/50 to-transparent" />
 
           <div className="space-y-12">
-            {education.map((edu) => (
-              <article
+            {education.map((edu, index) => (
+              <SpotlightCard
                 key={edu.id}
-                className="relative rounded-3xl border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-lg transition duration-500 hover:border-[#35c3ff]/60 hover:shadow-[0_28px_70px_-35px_rgba(53,195,255,0.7)] sm:px-10"
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                clipOverflow={false}
+                spotlightColor="53,195,255"
+                className="rounded-3xl border border-white/10 bg-white/5 px-6 py-8 backdrop-blur-lg transition duration-500 hover:border-[#35c3ff]/60 hover:shadow-[0_28px_70px_-35px_rgba(53,195,255,0.7)] sm:px-10"
               >
                 <span className="absolute -left-8 top-10 flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-[#18162c] shadow-[0_20px_40px_-35px_rgba(53,195,255,0.9)]">
                   <img
                     src={edu.img}
                     alt={edu.school}
+                    loading="lazy"
+                    decoding="async"
                     className="h-10 w-10 rounded-full object-cover"
                   />
                 </span>
@@ -60,7 +86,7 @@ const Education = () => {
                 </div>
 
                 <p className="mt-6 text-gray-300">{edu.desc}</p>
-              </article>
+              </SpotlightCard>
             ))}
           </div>
         </div>

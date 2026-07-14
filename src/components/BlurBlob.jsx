@@ -1,15 +1,16 @@
 // components/BlurBlob.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
-const BlurBlob = ({ position, size }) => {
+const BlurBlob = ({ position, size, color = 'bg-purple-500', duration = 22 }) => {
   // Destructure position and size with default values
   const { top, left } = position
-  const { width, height } = size 
+  const { width, height } = size
 
   return (
     <div
-      className="absolute"
+      className="pointer-events-none absolute"
       style={{
         top: top,
         left: left,
@@ -18,9 +19,18 @@ const BlurBlob = ({ position, size }) => {
         transform: 'translate(-50%, -50%)',
       }}
     >
-      <div
-        className="w-full h-full bg-purple-500 rounded-full opacity-20 blur-3xl animate-blob"
-      ></div>
+      <motion.div
+        className={`h-full w-full rounded-full ${color} opacity-20 blur-3xl animate-blob`}
+        animate={{
+          x: [0, 40, -30, 0],
+          y: [0, -30, 25, 0],
+        }}
+        transition={{
+          duration,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
     </div>
   );
 };
@@ -35,6 +45,8 @@ BlurBlob.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string,
   }),
+  color: PropTypes.string,
+  duration: PropTypes.number,
 };
 
 export default BlurBlob;
